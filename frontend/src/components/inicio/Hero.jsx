@@ -5,7 +5,10 @@ import { FaHeart, FaBookOpen, FaUsers, FaArrowRight, FaInstagram, FaStar, FaShap
 import { BiHappyHeartEyes } from "react-icons/bi"; 
 // IMPORTANTE: Usa este Imagen1 solo como placeholder.
 import Imagen1 from '../../assets/Donacion.png';
-import Imagen2 from '../../assets/Imagen1.png';
+import Imagen2 from '../../assets/Imagen3.png';
+import Tarjeta1 from '../../assets/Imagen6.png';
+import Tarjeta2 from '../../assets/Imagen4.png';
+import Tarjeta3 from '../../assets/Imagen5.png';
 
 // NOTA: Importa aquí tus 8 imágenes reales para el collage final
 // import Collage1 from '../../assets/collage/foto1.jpg';
@@ -56,7 +59,7 @@ const Hero = () => {
     "Redes de apoyo entre familias y profesionales"
   ];
 
-  // Datos para Testimonios (Basado en tu imagen)
+  // Datos para Testimonios
   const testimonios = [
     {
       quote: "La cartilla que recibimos me ayudó a entender mejor las emociones de mi hijo. Fue como abrir una ventana al mundo que él ve.",
@@ -68,7 +71,7 @@ const Hero = () => {
       quote: "Ser parte de un taller me cambió la forma de ver la inclusión. No solo enseñamos, también aprendimos de las familias que acompañamos.",
       author: "Mariana H.",
       role: "Voluntaria educativa",
-      highlight: true // Esta es la tarjeta naranja central
+      highlight: true 
     },
     {
       quote: "La Fundación hace un trabajo transformador, no solo entrega materiales, entrega dignidad y comunidad.",
@@ -189,7 +192,7 @@ const Hero = () => {
           <div className="bg-gradient-to-br from-green-700 to-green-600 rounded-[2.5rem] p-10 md:p-16 grid lg:grid-cols-2 gap-12 items-center relative overflow-hidden shadow-2xl">
             <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl" />
             <div className="flex justify-center relative z-10">
-              <img src={Imagen2} alt="Misión" className="w-full max-w-sm rounded-2xl shadow-lg border-4 border-white/20" />
+              <img src={Imagen2} alt="Misión" className="w-full max-w-sm rounded-2xl" />
             </div>
             <div className="text-white relative z-10">
               <span className="inline-block py-1 px-3 rounded-full bg-white/20 backdrop-blur-sm text-xs font-bold uppercase tracking-wide text-white mb-4">Sobre Nosotros</span>
@@ -226,8 +229,8 @@ const Hero = () => {
             >
                 {/* TARJETA 1 */}
                 <motion.div variants={cardItemVariant} className="flex flex-col items-center text-center">
-                    <div className="w-48 h-48 rounded-full overflow-hidden shadow-lg mb-6 border-4 border-orange-50 group">
-                          <img src={Imagen1} alt="Charlas" className="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
+                    <div className="w-48 h-48 rounded-75 overflow-hidden shadow-lg mb-6 border-4 border-orange-50 group">
+                          <img src={Tarjeta1} alt="Charlas" className="w-50 h-60 bg-[#FAF9F7] object-cover group-hover:scale-110 transition duration-500" />
                     </div>
                     <h3 className="text-2xl font-serif font-bold text-gray-900 mb-3">Charlas por la inclusión</h3>
                     <p className="text-gray-600 text-sm leading-relaxed mb-6 px-4">
@@ -240,8 +243,8 @@ const Hero = () => {
 
                 {/* TARJETA 2 */}
                 <motion.div variants={cardItemVariant} className="flex flex-col items-center text-center">
-                    <div className="w-48 h-48 rounded-full overflow-hidden shadow-lg mb-6 border-4 border-blue-50 group">
-                          <img src={Imagen1} alt="Cartillas" className="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
+                    <div className="w-48 h-48 rounded-75 overflow-hidden shadow-lg mb-6 border-4 border-blue-50 group">
+                          <img src={Tarjeta2} alt="Charlas" className="w-50 h-50 bg-[#FAF9F7] object-cover group-hover:scale-110 transition duration-500" />
                     </div>
                     <h3 className="text-2xl font-serif font-bold text-gray-900 mb-3">Cartillas que conectan</h3>
                     <p className="text-gray-600 text-sm leading-relaxed mb-6 px-4">
@@ -254,8 +257,8 @@ const Hero = () => {
 
                 {/* TARJETA 3 */}
                 <motion.div variants={cardItemVariant} className="flex flex-col items-center text-center">
-                    <div className="w-48 h-48 rounded-full overflow-hidden shadow-lg mb-6 border-4 border-pink-50 group">
-                          <img src={Imagen1} alt="Kits" className="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
+                    <div className="w-48 h-48 rounded-75 overflow-hidden shadow-lg mb-6 border-4 border-pink-50 group">
+                          <img src={Tarjeta3} alt="Charlas" className="w-50 h-50 bg-[#FAF9F7] object-cover group-hover:scale-110 transition duration-500" />
                     </div>
                     <h3 className="text-2xl font-serif font-bold text-gray-900 mb-3">Apoyo para quienes cuidan</h3>
                     <p className="text-gray-600 text-sm leading-relaxed mb-6 px-4">
@@ -333,7 +336,8 @@ const Hero = () => {
       {/* =======================
           7. SUMATE AL CAMBIO
       ======================= */}
-      <div className="pb-32">
+      {/* 🔴 CAMBIO AQUÍ: Reduje pb-32 a pb-8 para disminuir el espacio */}
+      <div className="pb-8">
         <div className="max-w-7xl mx-auto px-6">
           <div className="bg-[#F3EEE8] rounded-[2.5rem] p-10 md:p-16 grid lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-4">
@@ -357,7 +361,8 @@ const Hero = () => {
       {/* ========================================================
           8. COLLAGE SIN BLUR
       ======================================================== */}
-      <div className="bg-[#FAF9F7] py-24 overflow-hidden relative flex items-center justify-center min-h-[800px]">
+      {/* 🔴 CAMBIO AQUÍ: Cambié py-24 por pt-12 pb-24 para acercarlo arriba */}
+      <div className="bg-[#FAF9F7] pt-12 pb-24 overflow-hidden relative flex items-center justify-center min-h-[800px]">
         
         {/* Contenedor principal del collage */}
         <div className="relative w-full max-w-7xl mx-auto px-4 h-full flex items-center justify-center font-sans">
@@ -419,9 +424,9 @@ const Hero = () => {
       </div>
 
       {/* ========================================================
-          9. NUEVA SECCIÓN: TESTIMONIOS (Basado en imagen)
+          9. TESTIMONIOS
       ======================================================== */}
-      <div className="bg-[#FAF9F7] py-24">
+      <div className="bg-[#FAF9F7] pt-5 pb-12">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
              <span className="text-orange-500 font-bold tracking-wider uppercase text-sm">Voces que inspiran</span>
@@ -443,7 +448,6 @@ const Hero = () => {
                   item.highlight ? 'bg-[#F48C51] text-white transform md:-translate-y-4' : 'bg-white text-gray-900 border border-gray-100'
                 }`}
               >
-                {/* Ícono de comillas decorativo */}
                 <div className="absolute top-6 right-8 opacity-20">
                    <FaQuoteLeft size={40} />
                 </div>
@@ -456,7 +460,6 @@ const Hero = () => {
 
                 <div className="mt-8 flex items-center gap-4">
                   <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-white/50 bg-gray-200">
-                     {/* Placeholder para Avatar */}
                      <img src={Imagen1} alt={item.author} className="w-full h-full object-cover" />
                   </div>
                   <div>

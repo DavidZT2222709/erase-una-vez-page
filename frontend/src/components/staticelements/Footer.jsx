@@ -80,10 +80,10 @@ const Footer = () => {
                     <div>
                         <p className="text-sm text-gray-400 mb-4">Síguenos en nuestras redes:</p>
                         <div className="flex gap-3">
-                            <a href="#" className="w-10 h-10 rounded-full bg-white text-[#1F454E] flex items-center justify-center hover:bg-green-300 transition hover:scale-110">
+                            <a href="https://www.instagram.com/fundaeraseunavez/" className="w-10 h-10 rounded-full bg-white text-[#1F454E] flex items-center justify-center hover:bg-green-300 transition hover:scale-110">
                                 <FaInstagram size={20} />
                             </a>
-                            <a href="#" className="w-10 h-10 rounded-full bg-white text-[#1F454E] flex items-center justify-center hover:bg-green-300 transition hover:scale-110">
+                            <a href="https://www.facebook.com/profile.php?id=61576502703003" className="w-10 h-10 rounded-full bg-white text-[#1F454E] flex items-center justify-center hover:bg-green-300 transition hover:scale-110">
                                 <FaFacebookF size={18} />
                             </a>
                         </div>
@@ -103,7 +103,7 @@ const Footer = () => {
                 <div className="flex items-center gap-1">
                     <span>Hecho con el</span>
                     <FaHeart className="text-red-500 animate-pulse" size={10} />
-                    <span>por <span className="text-white font-bold">Vittgo</span></span>
+                    <span>por <span className="text-white font-bold">BullTech</span></span>
                 </div>
             </div>
         </div>
