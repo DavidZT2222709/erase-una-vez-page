@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaBars, FaXmark, FaHeart } from "react-icons/fa6";
-import Logo from '../../assets/Logo.jpg';
+import Logo from '../../assets/InitialImages/Logo.jpg';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -24,7 +24,10 @@ const Navbar = () => {
   const navLinks = [
     { name: "Inicio", path: "/" },
     { name: "Nosotros", path: "/nosotros" },
-    { name: "Nuestro Trabajo", path: "/nuestro-trabajo" },
+    { name: "Proyectos", path: "/proyectos" },
+    { name: "Equipo de Trabajo", path: "/equipo-de-trabajo" },
+    { name: "Contactanos", path: "/contacto" },
+    { name: "Servicios", path: "/servicios" },
   ];
 
   return (
