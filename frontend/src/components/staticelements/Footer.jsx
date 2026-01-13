@@ -55,13 +55,17 @@ const Footer = () => {
                 </div>
 
                 <div className="flex gap-4">
-                     <button className="px-6 py-3 rounded-full bg-[#E63946] text-white text-sm font-bold hover:bg-red-600 transition shadow-lg hover:-translate-y-1 flex items-center gap-2">
-                        <FaHeart /> Donar
-                    </button>
-                    <button className="px-6 py-3 rounded-full border border-white/30 hover:bg-white/10 text-white text-sm font-semibold transition">
-                        Voluntariado
-                    </button>
-                </div>
+                    <a href='https://wa.me/573043699780'>
+                        <button className="px-6 py-3 rounded-full bg-[#E63946] text-white text-sm font-bold hover:bg-red-600 transition shadow-lg hover:-translate-y-1 flex items-center gap-2">
+                            <FaHeart /> Donar
+                        </button>
+                    </a>
+                    <a href='https://wa.me/573043699780'>
+                        <button className="px-6 py-3 rounded-full border border-white/30 hover:bg-white/10 text-white text-sm font-semibold transition">
+                            Voluntariado
+                        </button>
+                    </a>
+                    </div>
             </div>
 
             {/* --- SECCIÓN MEDIA: SEDES (Grid de 4 columnas) --- */}

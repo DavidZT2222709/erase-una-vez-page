@@ -7,6 +7,7 @@ import Footer from './components/staticelements/Footer.jsx';
 import Hero from './components/pages/Inicio.jsx';
 import Proyectos from './components/pages/Proyectos.jsx';
 import Contacto from './components/pages/Contacto.jsx';
+import Servicios from './components/pages/Servicios.jsx';
 
 // Asegúrate de importar también Footer y ScrollToTopButton si ya existen, 
 // de lo contrario, coméntalos o darán error.
@@ -30,6 +31,7 @@ function App() {
           {/* Pages/Views */}
           <Route path='/proyectos' element={<Proyectos />} />
           <Route path='/contacto' element={<Contacto />} />
+          <Route path='/servicios' element={<Servicios />} />
         </Routes>
 
         <Footer /> 

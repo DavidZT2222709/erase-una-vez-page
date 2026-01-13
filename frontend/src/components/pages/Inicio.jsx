@@ -10,6 +10,15 @@ import Tarjeta1 from '../../assets/InitialImages/Imagen6.png';
 import Tarjeta2 from '../../assets/InitialImages/Imagen4.png';
 import Tarjeta3 from '../../assets/InitialImages/Imagen5.png';
 
+import carrusel1 from '../../assets/InitialImages/Carrusel1.jpeg';
+import carrusel2 from '../../assets/InitialImages/Carrusel2.jpeg';
+import carrusel3 from '../../assets/InitialImages/Carrusel3.jpeg';
+import carrusel4 from '../../assets/InitialImages/Carrusel4.jpeg';
+import carrusel5 from '../../assets/InitialImages/Carrusel5.jpeg';
+import carrusel6 from '../../assets/InitialImages/Carrusel6.jpeg';
+import carrusel7 from '../../assets/InitialImages/Carrusel7.jpeg';
+import carrusel8 from '../../assets/InitialImages/Carrusel8.jpeg';
+
 // Imagenes de empresas aliadas
 import Exito from '../../assets/Marcas/Exito.svg';
 import Colombia from '../../assets/Marcas/Colombia.png';
@@ -57,8 +66,8 @@ const Hero = () => {
   };
 
   const heroImages = [
-    Imagen1, Imagen2, Tarjeta1, Tarjeta2, 
-    Tarjeta3, Imagen1, Imagen2, Tarjeta1
+    carrusel1, carrusel2, carrusel3, carrusel4, 
+    carrusel5, carrusel6, carrusel7, carrusel8
   ];
 
   const aliados = [Exito, Colombia, Colombina, Falabella, Ramo, Fcv];
@@ -143,12 +152,16 @@ const Hero = () => {
              </p>
 
              <div className="flex flex-wrap justify-center gap-3">
-                <button className="px-8 py-3 rounded-full bg-[#E63946] text-white font-bold text-base shadow-md hover:bg-red-700 transition transform hover:-translate-y-1">
-                   Haz tu aporte
-                </button>
-                <button className="px-8 py-3 rounded-full bg-transparent border border-gray-400 text-gray-700 font-bold text-base hover:border-gray-900 hover:text-gray-900 transition">
-                   Nuestros programas
-                </button>
+               <a href="https://wa.me/573043699780">
+                  <button className="px-8 py-3 rounded-full bg-[#E63946] text-white font-bold text-base shadow-md hover:bg-red-700 transition transform hover:-translate-y-1">
+                     Haz tu aporte
+                  </button>
+               </a>
+               <a href="/proyectos">
+                  <button className="px-8 py-3 rounded-full bg-transparent border border-gray-400 text-gray-700 font-bold text-base hover:border-gray-900 hover:text-gray-900 transition">
+                     Nuestros programas
+                  </button>
+               </a>
              </div>
           </motion.div>
         </div>

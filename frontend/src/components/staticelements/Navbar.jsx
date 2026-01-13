@@ -25,9 +25,9 @@ const Navbar = () => {
     { name: "Inicio", path: "/" },
     { name: "Nosotros", path: "/nosotros" },
     { name: "Proyectos", path: "/proyectos" },
+    { name: "Servicios", path: "/servicios" },
     { name: "Equipo de Trabajo", path: "/equipo-de-trabajo" },
     { name: "Contactanos", path: "/contacto" },
-    { name: "Servicios", path: "/servicios" },
   ];
 
   return (
@@ -68,10 +68,11 @@ const Navbar = () => {
           {/* 3. BOTÓN DONAR + MENÚ HAMBURGUESA */}
           <div className="flex items-center gap-4">
             {/* Botón CTA (Visible siempre o solo en desktop según prefieras) */}
-            <button className="hidden sm:flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#E63946] text-white text-sm font-bold hover:bg-red-700 transition shadow-md hover:-translate-y-0.5 transform duration-200">
-              <FaHeart size={14} /> Donar
-            </button>
-
+            <a href='https://wa.me/573043699780'>
+              <button className="hidden sm:flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#E63946] text-white text-sm font-bold hover:bg-red-700 transition shadow-md hover:-translate-y-0.5 transform duration-200">
+                <FaHeart size={14} /> Donar
+              </button>
+            </a>
             {/* Botón Hamburguesa (Móvil) */}
             <button 
               className="md:hidden text-gray-800 focus:outline-none p-2"
@@ -103,9 +104,11 @@ const Navbar = () => {
               </a>
             ))}
             
-            <button className="mt-4 px-8 py-3 rounded-full bg-[#E63946] text-white font-bold text-lg hover:bg-red-700 transition flex items-center gap-2">
-               <FaHeart /> Quiero Donar
-            </button>
+            <a href='https://wa.me/573043699780'>
+              <button className="mt-4 px-8 py-3 rounded-full bg-[#E63946] text-white font-bold text-lg hover:bg-red-700 transition flex items-center gap-2">
+                <FaHeart /> Quiero Donar
+              </button>
+            </a>
           </motion.div>
         )}
       </AnimatePresence>
