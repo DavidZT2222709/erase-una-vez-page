@@ -193,7 +193,7 @@ const Servicios = () => {
         {/* =========================================
             SECCIÓN 1: TIENDA SOLIDARIA
            ========================================= */}
-        <div className="mb-24">
+        <div id='tienda' className="mb-24">
           {/* Título Animado */}
           <motion.div 
             initial="hidden"
@@ -258,7 +258,7 @@ const Servicios = () => {
         {/* =========================================
             SECCIÓN 2: SERVICIOS EN SALUD
            ========================================= */}
-        <div className="mb-10">
+        <div id='salud' className="mb-10">
           {/* Título Animado */}
           <motion.div 
             initial="hidden"

@@ -3,12 +3,12 @@ import { motion, AnimatePresence, useInView, useMotionValue, useSpring } from 'f
 // Iconos
 import { FaPuzzlePiece, FaChalkboardUser, FaHeartPulse, FaUserDoctor, FaHandsHoldingChild, FaLightbulb, FaXmark, FaPlay, FaUsers, FaCity, FaHeart, FaHandHoldingHeart } from "react-icons/fa6";
 
-// IMPORTANTE: Importa aquí las imágenes de portada de cada proyecto
+// IMPORTANTE: Asegúrate de que esta ruta sea correcta para tu proyecto
 import ImagenProyecto1 from '../../assets/InitialImages/Donacion.png'; 
 const PlaceholderImg = ImagenProyecto1; 
 
 // ==========================================
-// COMPONENTE: CONTADOR ANIMADO
+// COMPONENTE AUXILIAR: CONTADOR ANIMADO
 // ==========================================
 const Counter = ({ value, suffix = "" }) => {
   const ref = useRef(null);
@@ -34,40 +34,19 @@ const Counter = ({ value, suffix = "" }) => {
   return <span ref={ref}>{displayValue}{suffix}</span>;
 };
 
+// ==========================================
+// COMPONENTE PRINCIPAL: PROYECTOS
+// ==========================================
 const Proyectos = () => {
   const [selectedProject, setSelectedProject] = useState(null);
 
-  // ==========================================
-  // CONFIGURACIÓN DE ANIMACIONES (NUEVO)
-  // ==========================================
-  
-  // 1. Variantes para el contenedor (Grid)
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2 // Retraso de 0.2s entre cada tarjeta
-      }
-    }
-  };
-
-  // 2. Variantes para cada tarjeta individual
-  const itemVariants = {
-    hidden: { opacity: 0, y: 50 }, // Empieza invisible y abajo
-    visible: { 
-      opacity: 1, 
-      y: 0, 
-      transition: { duration: 0.6, ease: "easeOut" } // Sube suavemente
-    }
-  };
-
-  // ==========================================
-  // DATOS DE LOS PROYECTOS
-  // ==========================================
+  // ---------------------------------------------------------
+  // 1. DATOS DE LOS PROYECTOS (Con propiedad 'slug' agregada)
+  // ---------------------------------------------------------
   const projectsData = [
     {
       id: 1,
+      slug: "concientizacion", // Debe coincidir con el hash del Navbar
       title: "Concientización sobre el Autismo",
       shortDesc: "Jornadas para educar y sensibilizar a la comunidad sobre la neurodivergencia.",
       fullDesc: "Realizamos campañas masivas en barrios, centros comerciales y redes sociales para derribar mitos sobre el autismo. Nuestro objetivo es crear una sociedad más empática que entienda la neurodivergencia no como una enfermedad, sino como una forma diferente de ver el mundo. Incluimos testimonios de familias y expertos.",
@@ -77,6 +56,7 @@ const Proyectos = () => {
     },
     {
       id: 2,
+      slug: "capacitacion", // Debe coincidir con el hash del Navbar
       title: "Capacitación a Instituciones Educativas",
       shortDesc: "Formación a docentes para crear aulas inclusivas y adaptadas.",
       fullDesc: "Visitamos colegios públicos y privados para brindar herramientas pedagógicas a los docentes. Enseñamos estrategias de diseño universal de aprendizaje (DUA), manejo de crisis en el aula y adaptación curricular, garantizando que los niños con discapacidades cognitivas tengan un aprendizaje significativo.",
@@ -86,6 +66,7 @@ const Proyectos = () => {
     },
     {
       id: 3,
+      slug: "sexualidad", // Debe coincidir con el hash del Navbar
       title: "Sexualidad Educativa",
       shortDesc: "Talleres adaptados sobre derechos, cuerpo y prevención.",
       fullDesc: "Un programa pionero enfocado en el derecho a la educación sexual para personas con discapacidad cognitiva. Abordamos temas como el reconocimiento del cuerpo, el consentimiento, la prevención del abuso y las relaciones afectivas sanas, utilizando material visual y didáctico adaptado a sus necesidades de comprensión.",
@@ -95,6 +76,7 @@ const Proyectos = () => {
     },
     {
       id: 4,
+      slug: "salud", // Debe coincidir con el hash del Navbar
       title: "Asistencia en Salud",
       shortDesc: "Brigadas y apoyo para el acceso a servicios médicos especializados.",
       fullDesc: "Gestionamos y realizamos brigadas de salud con neurólogos, psicólogos y terapeutas ocupacionales aliados. Además, brindamos asesoría legal y acompañamiento a las familias para garantizar que las EPS cumplan con la entrega de medicamentos y tratamientos necesarios.",
@@ -104,6 +86,7 @@ const Proyectos = () => {
     },
     {
       id: 5,
+      slug: "cuidadores", // Debe coincidir con el hash del Navbar
       title: "Acompañamiento a Cuidadores",
       shortDesc: "Espacios de respiro y apoyo psicológico para padres y madres.",
       fullDesc: "Sabemos que cuidar es una labor agotadora. Creamos 'Círculos de Respiro', espacios seguros donde padres, madres y cuidadores reciben apoyo psicológico, comparten experiencias y aprenden técnicas de manejo del estrés y autocuidado. Porque quien cuida también merece ser cuidado.",
@@ -113,6 +96,7 @@ const Proyectos = () => {
     },
     {
       id: 6,
+      slug: "emprendimiento", // Debe coincidir con el hash del Navbar
       title: "Proyectos de Emprendimiento",
       shortDesc: "Impulso económico para familias de niños con discapacidad.",
       fullDesc: "Capacitamos a madres cabeza de hogar y jóvenes con discapacidad en oficios productivos (artesanías, panadería, confección). Además, brindamos capital semilla y espacios en ferias para que puedan generar ingresos propios sin descuidar el cuidado de sus hijos.",
@@ -121,6 +105,63 @@ const Proyectos = () => {
       image: PlaceholderImg,
     },
   ];
+
+  // ---------------------------------------------------------
+  // 2. LÓGICA PARA ABRIR MODAL VÍA URL (Hash)
+  // ---------------------------------------------------------
+  useEffect(() => {
+    const handleHashChange = () => {
+      // Obtenemos el hash de la URL y quitamos el símbolo #
+      const hash = window.location.hash.replace('#', '');
+      
+      if (hash) {
+        // Buscamos si algún proyecto coincide con ese slug
+        const targetProject = projectsData.find(p => p.slug === hash);
+        
+        if (targetProject) {
+          // Abrimos el modal
+          setSelectedProject(targetProject);
+          
+          // Opcional: Hacemos scroll suave hasta la tarjeta
+          const element = document.getElementById(hash);
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }
+        }
+      }
+    };
+
+    // 1. Ejecutar al cargar la página (por si vienen de un link directo)
+    handleHashChange();
+
+    // 2. Escuchar cambios si el usuario navega dentro de la misma página
+    window.addEventListener('hashchange', handleHashChange);
+
+    // Limpieza al desmontar
+    return () => {
+      window.removeEventListener('hashchange', handleHashChange);
+    };
+  }, []);
+
+  // ---------------------------------------------------------
+  // CONFIGURACIÓN DE ANIMACIONES
+  // ---------------------------------------------------------
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.2 }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { 
+      opacity: 1, 
+      y: 0, 
+      transition: { duration: 0.6, ease: "easeOut" } 
+    }
+  };
 
   return (
     <div className="font-sans">
@@ -135,7 +176,7 @@ const Proyectos = () => {
 
             <div className="max-w-7xl mx-auto px-6 relative z-10">
                 
-                {/* ENCABEZADO (Animación Simple) */}
+                {/* ENCABEZADO */}
                 <motion.div 
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -152,22 +193,24 @@ const Proyectos = () => {
                     </p>
                 </motion.div>
 
-                {/* GRID DE PROYECTOS (Animación Escalonada) */}
-                <motion.div 
+                {/* GRID DE PROYECTOS */}
+                <motion.div
                     className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
-                    variants={containerVariants} // Usamos las variantes del contenedor
+                    variants={containerVariants}
                     initial="hidden"
                     whileInView="visible"
-                    viewport={{ once: true, margin: "-100px" }} // Se activa un poco antes de llegar
+                    viewport={{ once: true, margin: "-100px" }}
                 >
                     {projectsData.map((project) => (
                         <motion.div
                             key={project.id}
+                            id={project.slug} // ID CRUCIAL PARA EL SCROLL
                             layoutId={`card-${project.id}`}
-                            variants={itemVariants} // Cada tarjeta usa la variante de item
+                            variants={itemVariants}
                             onClick={() => setSelectedProject(project)}
                             whileHover={{ y: -8 }}
-                            className="bg-white rounded-[2rem] p-8 shadow-lg border border-gray-100 cursor-pointer group hover:border-orange-200 transition-colors"
+                            // scroll-mt-32 ayuda a que el navbar fijo no tape la tarjeta si falla el JS del modal
+                            className="scroll-mt-32 bg-white rounded-[2rem] p-8 shadow-lg border border-gray-100 cursor-pointer group hover:border-orange-200 transition-colors"
                         >
                             <div className={`w-16 h-16 rounded-2xl ${project.color} flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform duration-300`}>
                                 {project.icon}

@@ -24,8 +24,28 @@ const Navbar = () => {
   const navLinks = [
     { name: "Inicio", path: "/" },
     { name: "Nosotros", path: "/nosotros" },
-    { name: "Proyectos", path: "/proyectos" },
-    { name: "Servicios", path: "/servicios" },
+    { 
+      name: "Proyectos", 
+      path: "/proyectos",
+      subLinks:[
+        {name: "Concientización sobre el Autismo", hash: "#concientizacion"},
+        {name: "Capacitación Docente", hash: "#capacitacion"},
+        {name: "Sexualidad Educativa", hash: "#sexualidad"},
+        {name: "Asistencia en Salud", hash: "#salud"},
+        {name: "Apoyo a Cuidadores", hash: "#cuidadores"},
+        {name: "Proyectos Emprendimiento", hash: "#emprendimiento"},
+      ]
+    
+    },
+    { 
+      name: "Servicios", 
+      path: "/servicios",
+      subLinks:[
+        {name: "Tienda Solidaria", hash: "#tienda"},
+        {name: "Servicios en Salud", hash: "#salud"},
+      ]
+
+    },
     { name: "Equipo de Trabajo", path: "/equipo-de-trabajo" },
     { name: "Contactanos", path: "/contacto" },
   ];
@@ -50,18 +70,46 @@ const Navbar = () => {
             />
           </a>
 
-          {/* 2. MENÚ DESKTOP (Oculto en móvil) */}
+          {/* 2. MENÚ DESKTOP */}
           <div className="hidden md:flex items-center space-x-8">
             {navLinks.map((link) => (
-              <a 
-                key={link.name} 
-                href={link.path} 
-                className="text-gray-700 font-medium hover:text-orange-500 transition-colors relative group"
-              >
-                {link.name}
-                {/* Línea animada al hacer hover */}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-orange-500 transition-all duration-300 group-hover:w-full"></span>
-              </a>
+              <div key={link.name} className="relative group h-full flex items-center">
+                
+                {/* Enlace Principal */}
+                <a 
+                  href={link.path} 
+                  className="text-gray-700 font-medium hover:text-orange-500 transition-colors relative flex items-center gap-1 py-4"
+                >
+                  {link.name}
+                  
+                  {/* Ícono de flecha pequeña si tiene submenú (Opcional pero recomendado para UX) */}
+                  {link.subLinks && (
+                    <svg className="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
+                  )}
+
+                  {/* Línea animada (Tu código original) */}
+                  <span className="absolute bottom-2 left-0 w-0 h-0.5 bg-orange-500 transition-all duration-300 group-hover:w-full"></span>
+                </a>
+
+                {/* LÓGICA DEL DROPDOWN (Solo se renderiza si existen subLinks) */}
+                {link.subLinks && (
+                  <div className="absolute top-full left-0 pt-2 hidden group-hover:block min-w-[200px] z-50">
+                    {/* Contenedor blanco con sombra */}
+                    <div className="bg-white rounded-md shadow-xl border border-gray-100 overflow-hidden py-2">
+                      {link.subLinks.map((subItem) => (
+                        <a
+                          key={subItem.name}
+                          // Concatenamos la ruta principal + el hash (#seccion)
+                          href={`${link.path}${subItem.hash}`}
+                          className="block px-4 py-2 text-sm text-gray-600 hover:bg-orange-50 hover:text-orange-600 transition-colors"
+                        >
+                          {subItem.name}
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
             ))}
           </div>
 

@@ -8,6 +8,9 @@ import Hero from './components/pages/Inicio.jsx';
 import Proyectos from './components/pages/Proyectos.jsx';
 import Contacto from './components/pages/Contacto.jsx';
 import Servicios from './components/pages/Servicios.jsx';
+import HelpButton from './components/staticelements/HelpButton.jsx';
+import Nosotros from './components/pages/Nosotros.jsx';
+import Teams from './components/pages/Teams.jsx';
 
 // Asegúrate de importar también Footer y ScrollToTopButton si ya existen, 
 // de lo contrario, coméntalos o darán error.
@@ -32,8 +35,11 @@ function App() {
           <Route path='/proyectos' element={<Proyectos />} />
           <Route path='/contacto' element={<Contacto />} />
           <Route path='/servicios' element={<Servicios />} />
+          <Route path='/nosotros' element={<Nosotros />} />
+          <Route path='/equipo-de-trabajo' element={<Teams />} />
         </Routes>
-
+        
+        <HelpButton />
         <Footer /> 
         {/* <ScrollToTopButton /> */}
       </main>
